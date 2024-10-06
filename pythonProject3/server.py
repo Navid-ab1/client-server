@@ -27,4 +27,6 @@ def execute_math(operation,operand):
         return f"console error{str(e)}"
     
 
-context = zmq.Context
+context = zmq.Context()
+socket = context.socket(zmq.REP)
+socket.bind("tcp://*:5555")
