@@ -30,3 +30,19 @@ def execute_math(operation,operand):
 context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5555")
+print('server is running ... Waiting for requests')
+
+
+
+while True:
+    message = socket.recv_string
+    print(f"receved message {message}")
+    command = json.loads(message)
+    print(command ,f'the form of the command is like')
+    if command['command_type'] =='os':
+        result = os_command(command['command'],command['args'])
+    elif command['command_type'] == 'math':
+        result = execute_math(command['command'],command['args'])
+    else: result ='Error: has happened'
+
+    socket.send_string(result)
