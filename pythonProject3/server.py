@@ -10,6 +10,21 @@ def os_command(command,args):
         return f"console error{str(e)}"
     
 def execute_math(operation,operand):
-    if operation =='sum':
-        return sum(operand)    
+    try:
+        if operation =='sum':
+            return sum(operand)    
+        elif operation =='subract':
+            return (operand[0]-operand[1])
+        elif operation =='divide':
+            return operand[0]/operand[1] if operand[1]!='0' else "Error:division by zero"
+        elif operation =='muliply':
+            res = 1
+            for num in operand:
+                res *=num
+            return res
+        else: return "Error:An unsupported operation occured"
+    except Exception as e:
+        return f"console error{str(e)}"
     
+
+context = zmq.Context
