@@ -4,7 +4,7 @@ import json
 
 def os_command(command, args):
     try:
-        result = subprocess.run([command] + args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        result = subprocess.run([command] + args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,timeout=10)
         return result.stdout.decode() if result.returncode == 0 else result.stderr.decode()
     except Exception as e:
         return f"console error: {str(e)}"

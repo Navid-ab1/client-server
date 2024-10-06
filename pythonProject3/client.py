@@ -22,8 +22,17 @@ math_command = {
     "operation": "multiply",  
     "operands": [5, 10]
 }
+ping_command = {
+    "command_type": "os",
+    "command": "ping",
+    "args": ["-c", "4", "8.8.8.8"]  # "-c 4" means send 4 pings
+}
+
 
 print("Sending os command ")
 send_request(os_command)
 print("Sending math command")
 send_request(math_command)
+print("Sending os command")
+send_request(ping_command)
+
