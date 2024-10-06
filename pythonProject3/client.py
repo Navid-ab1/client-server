@@ -1,8 +1,8 @@
 import zmq
 import json
 
-context = zmq.context()
-socket = context.socket(zmq.req)
+context = zmq.Context()
+socket = context.socket(zmq.REQ)
 socket.connect('tcp://localhost:5555')
 
 def send_request(command):
@@ -12,16 +12,15 @@ def send_request(command):
 
 
 os_command = {
-    "command_type":"os",
-    "command":"ls",
-    "args":["-l"]
+    "command_type": "os",
+    "command": "ls",
+    "args": ["-l"]
 }
 
-
 math_command = {
-    "command_type":"math",
-    "operation":"math",
-    "operands":[5,10]
+    "command_type": "math",
+    "operation": "multiply",  
+    "operands": [5, 10]
 }
 
 print("Sending os command ")
